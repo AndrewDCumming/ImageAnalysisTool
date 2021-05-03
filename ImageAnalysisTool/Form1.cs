@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace ImageAnalysisTool
 {
@@ -27,7 +28,6 @@ namespace ImageAnalysisTool
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            //this.Visible = false;
             MessageBox.Show("Loading Feature unavailable");
         }
     }
