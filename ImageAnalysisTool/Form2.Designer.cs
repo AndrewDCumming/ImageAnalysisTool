@@ -117,7 +117,7 @@ namespace ImageAnalysisTool
             // fileInfoLabel
             // 
             this.fileInfoLabel.AutoSize = true;
-            this.fileInfoLabel.Location = new System.Drawing.Point(518, 27);
+            this.fileInfoLabel.Location = new System.Drawing.Point(527, 53);
             this.fileInfoLabel.Name = "fileInfoLabel";
             this.fileInfoLabel.Size = new System.Drawing.Size(74, 15);
             this.fileInfoLabel.TabIndex = 6;

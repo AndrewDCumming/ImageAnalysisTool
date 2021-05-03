@@ -17,6 +17,7 @@ namespace ImageAnalysisTool
         String directoryList;
         int currentNumber = 0;
         Image image;
+        ImageInfoRetrieve retriever = new ImageInfoRetrieve();
         public Form2()
         {
             InitializeComponent();
@@ -34,8 +35,7 @@ namespace ImageAnalysisTool
             if (browser.ShowDialog()== System.Windows.Forms.DialogResult.OK)
             {
                 filepaths = Directory.GetFiles(browser.SelectedPath, "*.jpg");
-                
-                
+                          
             }
             directoryList = "Files:\n";
             
@@ -50,6 +50,7 @@ namespace ImageAnalysisTool
             imgNameLabel.Text= "Current Image: " + filepaths[0];
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             this.imgBox.Image = image;
+            fileInfoLabel.Text = retriever.GetAllInformation(image);
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -60,27 +61,22 @@ namespace ImageAnalysisTool
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             this.imgBox.Image = image;
 
+            fileInfoLabel.Text = retriever.GetAllInformation(image);
+            /**
+            //36867 - Date and time
             PropertyItem propItem = image.GetPropertyItem(36867);
             string dateTaken = Encoding.UTF8.GetString(propItem.Value);
             fileInfoLabel.Text = "Date and Time Taken: \n" + dateTaken;
+            //305 device information
+            //271 Device manufacturer
+            //272 Device model
+            propItem = image.GetPropertyItem(272);
+            dateTaken = Encoding.UTF8.GetString(propItem.Value);
+            fileInfoLabel.Text += "Device: \n" + dateTaken;
             Debug.WriteLine(dateTaken);
             //Debug.WriteLine(propItem.ToString());
-
-
-            //This works for pulling metadata need to narrow it down for relevant info
-            /**
-            fileInfoLabel.Text = "";
-            PropertyItem[] propItems = image.PropertyItems;
-            int count = 0;
-            foreach (PropertyItem propItem in propItems)
-            {
-                fileInfoLabel.Text += "\nProperty Item " + count.ToString();
-                fileInfoLabel.Text += "\nID: 0x" + propItem.Id.ToString("x");
-                fileInfoLabel.Text += "\nType: " + propItem.Type.ToString();
-                fileInfoLabel.Text += "\n Length: " + propItem.Len.ToString() + " bytes";
-                count += 1;
-            }
             */
+
 
 
 
@@ -93,6 +89,7 @@ namespace ImageAnalysisTool
             imgNameLabel.Text = "Current Image: " + filepaths[currentNumber];
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             this.imgBox.Image = image;
+            fileInfoLabel.Text = retriever.GetAllInformation(image);
         }
     }
 }
