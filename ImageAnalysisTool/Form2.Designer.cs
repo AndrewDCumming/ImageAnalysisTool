@@ -33,7 +33,13 @@ namespace ImageAnalysisTool
             this.toolStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripAddDir = new System.Windows.Forms.ToolStripMenuItem();
             this.listBox = new System.Windows.Forms.RichTextBox();
+            this.imgBox = new System.Windows.Forms.PictureBox();
+            this.imgNameLabel = new System.Windows.Forms.Label();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.prevButton = new System.Windows.Forms.Button();
+            this.fileInfoLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -70,11 +76,63 @@ namespace ImageAnalysisTool
             this.listBox.TabIndex = 1;
             this.listBox.Text = "";
             // 
+            // imgBox
+            // 
+            this.imgBox.Location = new System.Drawing.Point(167, 53);
+            this.imgBox.Name = "imgBox";
+            this.imgBox.Size = new System.Drawing.Size(316, 244);
+            this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgBox.TabIndex = 2;
+            this.imgBox.TabStop = false;
+            // 
+            // imgNameLabel
+            // 
+            this.imgNameLabel.AutoSize = true;
+            this.imgNameLabel.Location = new System.Drawing.Point(167, 27);
+            this.imgNameLabel.Name = "imgNameLabel";
+            this.imgNameLabel.Size = new System.Drawing.Size(89, 15);
+            this.imgNameLabel.TabIndex = 3;
+            this.imgNameLabel.Text = "Current Image: ";
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(408, 314);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
+            this.nextButton.TabIndex = 4;
+            this.nextButton.Text = "Next";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // prevButton
+            // 
+            this.prevButton.Location = new System.Drawing.Point(167, 314);
+            this.prevButton.Name = "prevButton";
+            this.prevButton.Size = new System.Drawing.Size(75, 23);
+            this.prevButton.TabIndex = 5;
+            this.prevButton.Text = "Previous";
+            this.prevButton.UseVisualStyleBackColor = true;
+            this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
+            // 
+            // fileInfoLabel
+            // 
+            this.fileInfoLabel.AutoSize = true;
+            this.fileInfoLabel.Location = new System.Drawing.Point(518, 27);
+            this.fileInfoLabel.Name = "fileInfoLabel";
+            this.fileInfoLabel.Size = new System.Drawing.Size(74, 15);
+            this.fileInfoLabel.TabIndex = 6;
+            this.fileInfoLabel.Text = "Remove Text";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.fileInfoLabel);
+            this.Controls.Add(this.prevButton);
+            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.imgNameLabel);
+            this.Controls.Add(this.imgBox);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Form2";
@@ -82,6 +140,7 @@ namespace ImageAnalysisTool
             this.Load += new System.EventHandler(this.Form2_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,5 +152,10 @@ namespace ImageAnalysisTool
         private System.Windows.Forms.ToolStripMenuItem toolStripFile;
         private System.Windows.Forms.ToolStripMenuItem toolStripAddDir;
         private System.Windows.Forms.RichTextBox listBox;
+        private System.Windows.Forms.PictureBox imgBox;
+        private System.Windows.Forms.Label imgNameLabel;
+        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button prevButton;
+        private System.Windows.Forms.Label fileInfoLabel;
     }
 }
