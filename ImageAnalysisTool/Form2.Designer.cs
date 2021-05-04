@@ -38,6 +38,10 @@ namespace ImageAnalysisTool
             this.nextButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
             this.fileInfoLabel = new System.Windows.Forms.Label();
+            this.imageCatLabel = new System.Windows.Forms.Label();
+            this.categoryBox = new System.Windows.Forms.TextBox();
+            this.catList = new System.Windows.Forms.Label();
+            this.submitButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.SuspendLayout();
@@ -123,11 +127,49 @@ namespace ImageAnalysisTool
             this.fileInfoLabel.TabIndex = 6;
             this.fileInfoLabel.Text = "Remove Text";
             // 
+            // imageCatLabel
+            // 
+            this.imageCatLabel.AutoSize = true;
+            this.imageCatLabel.Location = new System.Drawing.Point(168, 344);
+            this.imageCatLabel.Name = "imageCatLabel";
+            this.imageCatLabel.Size = new System.Drawing.Size(128, 15);
+            this.imageCatLabel.TabIndex = 7;
+            this.imageCatLabel.Text = "Put Image in Category:";
+            // 
+            // categoryBox
+            // 
+            this.categoryBox.Location = new System.Drawing.Point(168, 363);
+            this.categoryBox.Name = "categoryBox";
+            this.categoryBox.Size = new System.Drawing.Size(234, 23);
+            this.categoryBox.TabIndex = 8;
+            // 
+            // catList
+            // 
+            this.catList.AutoSize = true;
+            this.catList.Location = new System.Drawing.Point(168, 393);
+            this.catList.Name = "catList";
+            this.catList.Size = new System.Drawing.Size(66, 15);
+            this.catList.TabIndex = 9;
+            this.catList.Text = "Categories:";
+            // 
+            // submitButton
+            // 
+            this.submitButton.Location = new System.Drawing.Point(409, 363);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 10;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.catList);
+            this.Controls.Add(this.categoryBox);
+            this.Controls.Add(this.imageCatLabel);
             this.Controls.Add(this.fileInfoLabel);
             this.Controls.Add(this.prevButton);
             this.Controls.Add(this.nextButton);
@@ -157,5 +199,9 @@ namespace ImageAnalysisTool
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button prevButton;
         private System.Windows.Forms.Label fileInfoLabel;
+        private System.Windows.Forms.Label imageCatLabel;
+        private System.Windows.Forms.TextBox categoryBox;
+        private System.Windows.Forms.Label catList;
+        private System.Windows.Forms.Button submitButton;
     }
 }

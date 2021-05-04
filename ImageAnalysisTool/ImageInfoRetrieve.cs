@@ -13,7 +13,6 @@ namespace ImageAnalysisTool
     class ImageInfoRetrieve
     {
         PropertyItem propItem;
-        String allInfo;
 
         public string GetTimeAndDate(Image image)
         {
@@ -39,7 +38,7 @@ namespace ImageAnalysisTool
             String dateAndTime;
             String manufacturer;
             String model;
-
+            String allInfo;
             dateAndTime = this.GetTimeAndDate(image);
             manufacturer = this.GetDeviceManufacturer(image);
             model = this.GetDeviceModel(image);

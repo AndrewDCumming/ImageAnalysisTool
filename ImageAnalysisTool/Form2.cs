@@ -16,8 +16,11 @@ namespace ImageAnalysisTool
         String[] filepaths;
         String directoryList;
         int currentNumber = 0;
-        Image image;
         ImageInfoRetrieve retriever = new ImageInfoRetrieve();
+        List<TheImage> imageList = new List<TheImage>();
+        Image image;
+
+
         public Form2()
         {
             InitializeComponent();
@@ -35,49 +38,28 @@ namespace ImageAnalysisTool
             if (browser.ShowDialog()== System.Windows.Forms.DialogResult.OK)
             {
                 filepaths = Directory.GetFiles(browser.SelectedPath, "*.jpg");
-                          
             }
             directoryList = "Files:\n";
             
             foreach(string files in filepaths)
             {
                 directoryList += files + "\n";
-                Debug.WriteLine(files);
+                TheImage theImage = new TheImage(Path.GetFileName(files), Image.FromFile(files));
+                imageList.Add(theImage);
             }
             listBox.Text = directoryList;
 
-            image = Image.FromFile(filepaths[0]);
-            imgNameLabel.Text= "Current Image: " + filepaths[0];
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            this.imgBox.Image = image;
-            fileInfoLabel.Text = retriever.GetAllInformation(image);
+            this.imgBox.Image = imageList[0].GetTheImage();
+            this.imgNameLabel.Text = "Current Image: " + imageList[0].TheImageName();
+
+            //fileInfoLabel.Text = retriever.GetAllInformation(image);
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
             currentNumber++;
-            image = Image.FromFile(filepaths[currentNumber]);
-            imgNameLabel.Text = "Current Image: " + filepaths[currentNumber];
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            this.imgBox.Image = image;
-
-            fileInfoLabel.Text = retriever.GetAllInformation(image);
-            /**
-            //36867 - Date and time
-            PropertyItem propItem = image.GetPropertyItem(36867);
-            string dateTaken = Encoding.UTF8.GetString(propItem.Value);
-            fileInfoLabel.Text = "Date and Time Taken: \n" + dateTaken;
-            //305 device information
-            //271 Device manufacturer
-            //272 Device model
-            propItem = image.GetPropertyItem(272);
-            dateTaken = Encoding.UTF8.GetString(propItem.Value);
-            fileInfoLabel.Text += "Device: \n" + dateTaken;
-            Debug.WriteLine(dateTaken);
-            //Debug.WriteLine(propItem.ToString());
-            */
-
-
+            imgNameLabel.Text = "Current Image: " + imageList[currentNumber].TheImageName();
+            this.imgBox.Image = imageList[currentNumber].GetTheImage();
 
 
         }
@@ -85,11 +67,10 @@ namespace ImageAnalysisTool
         private void prevButton_Click(object sender, EventArgs e)
         {
             currentNumber--;
-            image = Image.FromFile(filepaths[currentNumber]);
-            imgNameLabel.Text = "Current Image: " + filepaths[currentNumber];
-            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            this.imgBox.Image = image;
-            fileInfoLabel.Text = retriever.GetAllInformation(image);
+            imgNameLabel.Text = "Current Image: " + imageList[currentNumber].TheImageName();
+            this.imgBox.Image = imageList[currentNumber].GetTheImage();
         }
+
+
     }
 }
