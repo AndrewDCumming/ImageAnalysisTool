@@ -40,7 +40,7 @@ namespace ImageAnalysisTool
             this.fileInfoLabel = new System.Windows.Forms.Label();
             this.imageCatLabel = new System.Windows.Forms.Label();
             this.categoryBox = new System.Windows.Forms.TextBox();
-            this.catList = new System.Windows.Forms.Label();
+            this.catLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
@@ -143,14 +143,14 @@ namespace ImageAnalysisTool
             this.categoryBox.Size = new System.Drawing.Size(234, 23);
             this.categoryBox.TabIndex = 8;
             // 
-            // catList
+            // catLabel
             // 
-            this.catList.AutoSize = true;
-            this.catList.Location = new System.Drawing.Point(168, 393);
-            this.catList.Name = "catList";
-            this.catList.Size = new System.Drawing.Size(66, 15);
-            this.catList.TabIndex = 9;
-            this.catList.Text = "Categories:";
+            this.catLabel.AutoSize = true;
+            this.catLabel.Location = new System.Drawing.Point(168, 393);
+            this.catLabel.Name = "catLabel";
+            this.catLabel.Size = new System.Drawing.Size(66, 15);
+            this.catLabel.TabIndex = 9;
+            this.catLabel.Text = "Categories:";
             // 
             // submitButton
             // 
@@ -160,6 +160,7 @@ namespace ImageAnalysisTool
             this.submitButton.TabIndex = 10;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // Form2
             // 
@@ -167,7 +168,7 @@ namespace ImageAnalysisTool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.catList);
+            this.Controls.Add(this.catLabel);
             this.Controls.Add(this.categoryBox);
             this.Controls.Add(this.imageCatLabel);
             this.Controls.Add(this.fileInfoLabel);
@@ -201,7 +202,7 @@ namespace ImageAnalysisTool
         private System.Windows.Forms.Label fileInfoLabel;
         private System.Windows.Forms.Label imageCatLabel;
         private System.Windows.Forms.TextBox categoryBox;
-        private System.Windows.Forms.Label catList;
+        private System.Windows.Forms.Label catLabel;
         private System.Windows.Forms.Button submitButton;
     }
 }

@@ -7,6 +7,7 @@ namespace ImageAnalysisTool
 {
     public class TheImage
     {
+        ImageInfoRetrieve retriever = new ImageInfoRetrieve();
         Image image;
         String name;
 
@@ -26,6 +27,11 @@ namespace ImageAnalysisTool
         public Image GetTheImage()
         {
             return image;
+        }
+
+        public String GetAllInfo()
+        {
+            return retriever.GetAllInformation(image);
         }
     }
 }
