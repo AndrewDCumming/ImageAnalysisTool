@@ -1,7 +1,7 @@
 ﻿
 namespace ImageAnalysisTool
 {
-    partial class Form1
+    partial class InitialForm
     {
         /// <summary>
         ///  Required designer variable.

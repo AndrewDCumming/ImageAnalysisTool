@@ -1,7 +1,7 @@
 ﻿
 namespace ImageAnalysisTool
 {
-    partial class Form2
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@ namespace ImageAnalysisTool
             this.categoryBox = new System.Windows.Forms.TextBox();
             this.catLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
+            this.sortButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.SuspendLayout();
@@ -123,9 +124,8 @@ namespace ImageAnalysisTool
             this.fileInfoLabel.AutoSize = true;
             this.fileInfoLabel.Location = new System.Drawing.Point(527, 53);
             this.fileInfoLabel.Name = "fileInfoLabel";
-            this.fileInfoLabel.Size = new System.Drawing.Size(74, 15);
+            this.fileInfoLabel.Size = new System.Drawing.Size(0, 15);
             this.fileInfoLabel.TabIndex = 6;
-            this.fileInfoLabel.Text = "Remove Text";
             // 
             // imageCatLabel
             // 
@@ -162,11 +162,22 @@ namespace ImageAnalysisTool
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
+            // sortButton
+            // 
+            this.sortButton.Location = new System.Drawing.Point(13, 445);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(137, 32);
+            this.sortButton.TabIndex = 11;
+            this.sortButton.Text = "Sort Options";
+            this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.sortButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.catLabel);
             this.Controls.Add(this.categoryBox);
@@ -204,5 +215,6 @@ namespace ImageAnalysisTool
         private System.Windows.Forms.TextBox categoryBox;
         private System.Windows.Forms.Label catLabel;
         private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Button sortButton;
     }
 }

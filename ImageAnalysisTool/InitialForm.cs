@@ -11,9 +11,9 @@ using System.Diagnostics;
 
 namespace ImageAnalysisTool
 {
-    public partial class Form1 : Form
+    public partial class InitialForm : Form
     {
-        public Form1()
+        public InitialForm()
         {
             InitializeComponent();
         }
@@ -22,13 +22,24 @@ namespace ImageAnalysisTool
         private void newButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
+            MainForm form2 = new MainForm();
+            form2.FormClosed += form2_FormClosed;
+            form2.Show();
         }
+
+        void form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Visible = true;
+        }
+
 
         private void loadButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Loading Feature Not Here");
         }
+
+
+
+
     }
 }

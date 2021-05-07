@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageAnalysisTool
 {
-    class Categories
+    public class Categories
     {
         private string catName;
         List<TheImage> imageList = new List<TheImage>();
