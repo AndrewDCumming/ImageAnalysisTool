@@ -16,20 +16,33 @@ namespace ImageAnalysisTool
 
         public string GetTimeAndDate(Image image)
         {
-            propItem = image.GetPropertyItem(36867);
-            return Encoding.UTF8.GetString(propItem.Value);
+            try
+            {
+                propItem = image.GetPropertyItem(36867);
+                return Encoding.UTF8.GetString(propItem.Value);
+            }
+            catch { return "N/A"; }
+            
         }
 
         public string GetDeviceManufacturer(Image image)
         {
-            propItem = image.GetPropertyItem(271);
-            return Encoding.UTF8.GetString(propItem.Value);
+            try
+            {
+                propItem = image.GetPropertyItem(271);
+                return Encoding.UTF8.GetString(propItem.Value);
+            }
+            catch { return "N/A"; }
         }
 
         public string GetDeviceModel(Image image)
         {
-            propItem = image.GetPropertyItem(272);
-            return Encoding.UTF8.GetString(propItem.Value);
+            try
+            {
+                propItem = image.GetPropertyItem(272);
+                return Encoding.UTF8.GetString(propItem.Value);
+            }
+            catch { return "N/A";}
         }
 
 

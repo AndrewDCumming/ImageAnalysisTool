@@ -33,5 +33,6 @@ namespace ImageAnalysisTool
         {
             return retriever.GetAllInformation(image);
         }
+
     }
 }

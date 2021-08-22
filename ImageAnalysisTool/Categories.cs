@@ -37,5 +37,22 @@ namespace ImageAnalysisTool
         }
 
 
+        public Bitmap ImageToReturn(int number)
+        {
+            Bitmap returningImage = new Bitmap(imageList[number].GetTheImage());
+            return returningImage;
+        }
+
+        public List<TheImage> ReturnTheImageList()
+        {
+            return imageList;
+        }
+
+        public TheImage ImageActualReturn(int number)
+        {
+            return imageList[number];
+        }
+
+
     }
 }

@@ -12,6 +12,8 @@ namespace ImageAnalysisTool
     public partial class SortingForm : Form
     {
         List<Categories> categoriesToSort = new List<Categories>();
+        ImageInfoRetrieve retriever = new ImageInfoRetrieve();
+
 
 
         public SortingForm()
@@ -22,7 +24,12 @@ namespace ImageAnalysisTool
         public void AddCategories(List<Categories> catList)
         {
             categoriesToSort = catList;
-            Debug.WriteLine(categoriesToSort.Count);
+        }
+
+
+        public List<Categories> returnList()
+        {
+            return categoriesToSort;
         }
 
 
@@ -30,30 +37,123 @@ namespace ImageAnalysisTool
         {
             if (manufacturerBox.Checked)
             {
-                //Get the images to go in categories by manufacturer
-                MessageBox.Show("Hello");
+                for (int i = 0; i < categoriesToSort[0].ReturnNumberOfImages(); i++)
+                {
+                    TheImage imageInUse = categoriesToSort[0].ImageActualReturn(i);
+                    String manufacturer;
+                    manufacturer = retriever.GetDeviceManufacturer(imageInUse.GetTheImage());
+                    bool flag = false;
+
+                    foreach(Categories cat in categoriesToSort)
+                    {
+                        if (cat.Name == manufacturer)
+                        {
+                            flag = true;
+                            cat.AddImageToCategory(imageInUse.TheImageName(), imageInUse.GetTheImage());
+                        }
+                    }
+
+                    if (flag == false)
+                    {
+                        Categories newCategory = new Categories(manufacturer);
+                        newCategory.AddImageToCategory(imageInUse.TheImageName(), imageInUse.GetTheImage());
+                        categoriesToSort.Add(newCategory);
+                    }
+
+
+                }
             }
-            if (modelBox.Checked)
+            else if (modelBox.Checked)
+            {
+                for (int i = 0; i < categoriesToSort[0].ReturnNumberOfImages(); i++)
+                {
+                    TheImage imageInUse = categoriesToSort[0].ImageActualReturn(i);
+                    String model;
+                    model = retriever.GetDeviceManufacturer(imageInUse.GetTheImage());
+                    bool flag = false;
+
+                    foreach (Categories cat in categoriesToSort)
+                    {
+                        if (cat.Name == model)
+                        {
+                            flag = true;
+                            cat.AddImageToCategory(imageInUse.TheImageName(), imageInUse.GetTheImage());
+                        }
+                    }
+
+                    if (flag == false)
+                    {
+                        Categories newCategory = new Categories(model);
+                        newCategory.AddImageToCategory(imageInUse.TheImageName(), imageInUse.GetTheImage());
+                        categoriesToSort.Add(newCategory);
+                    }
+
+                }
+            }
+            else if (yearBox.Checked)
             {
 
-            }
-            if (yearBox.Checked)
-            {
+                for (int i =0; i < categoriesToSort[0].ReturnNumberOfImages(); i++)
+                {
+                    TheImage imageInUse = categoriesToSort[0].ImageActualReturn(i);
+                    String dateAndTime;
+                    dateAndTime = retriever.GetTimeAndDate(imageInUse.GetTheImage());
+                    String[] dateAndTimeBreakdown = dateAndTime.Split(':');
+                    String year = dateAndTimeBreakdown[0];
+                    bool flag = false;
+
+
+                    foreach (Categories cat in categoriesToSort)
+                    {
+                        if (cat.Name == dateAndTimeBreakdown[0])
+                        {
+                            flag = true;
+                            cat.AddImageToCategory(imageInUse.TheImageName(),imageInUse.GetTheImage());
+                        }
+                    }
+
+                    if (flag == false)
+                    {
+                        Categories newCategory = new Categories(dateAndTimeBreakdown[0]);
+                        newCategory.AddImageToCategory(imageInUse.TheImageName(), imageInUse.GetTheImage());
+                        categoriesToSort.Add(newCategory);
+                    }
+              
+                }
+
 
             }
-            if (monthBox.Checked)
+            else if (faceBox.Checked)
             {
+                FaceDetection detect = new FaceDetection();
 
+                for (int i = 0; i < categoriesToSort[0].ReturnNumberOfImages(); i++)
+                {
+                    Debug.WriteLine("Working on image " + i);
+                    bool match = false;
+                    match = detect.LookForMatch(categoriesToSort[0].ImageToReturn(i));
+                    if (match == true)
+                    {
+                        //Add image to matches
+                        Debug.WriteLine("Match Found");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("No Match");
+                    }
+
+                }
             }
-            if (dayBox.Checked)
+            else
             {
-
-            }
-            if (locationBox.Checked)
-            {
-
+                MessageBox.Show("No selections chosen");
             }
             this.Hide();
+        }
+
+        private void SortingForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

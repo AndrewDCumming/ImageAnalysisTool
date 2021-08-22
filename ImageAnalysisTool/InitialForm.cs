@@ -33,13 +33,6 @@ namespace ImageAnalysisTool
         }
 
 
-        private void loadButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Loading Feature Not Here");
-        }
-
-
-
 
     }
 }

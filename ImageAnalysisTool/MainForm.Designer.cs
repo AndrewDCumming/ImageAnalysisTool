@@ -43,6 +43,7 @@ namespace ImageAnalysisTool
             this.catLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.sortButton = new System.Windows.Forms.Button();
+            this.reportButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.SuspendLayout();
@@ -154,7 +155,7 @@ namespace ImageAnalysisTool
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(409, 363);
+            this.submitButton.Location = new System.Drawing.Point(408, 362);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 10;
@@ -172,11 +173,22 @@ namespace ImageAnalysisTool
             this.sortButton.UseVisualStyleBackColor = true;
             this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
-            // Form2
+            // reportButton
+            // 
+            this.reportButton.Location = new System.Drawing.Point(634, 438);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(154, 39);
+            this.reportButton.TabIndex = 12;
+            this.reportButton.Text = "Generate Report";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.reportButton);
             this.Controls.Add(this.sortButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.catLabel);
@@ -189,7 +201,7 @@ namespace ImageAnalysisTool
             this.Controls.Add(this.imgBox);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "Form2";
+            this.Name = "MainForm";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -216,5 +228,6 @@ namespace ImageAnalysisTool
         private System.Windows.Forms.Label catLabel;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button sortButton;
+        private System.Windows.Forms.Button reportButton;
     }
 }

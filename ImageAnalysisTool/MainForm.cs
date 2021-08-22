@@ -16,6 +16,7 @@ namespace ImageAnalysisTool
         String[] filepaths;
         String directoryList;
         int currentNumber = 0;
+        Categories uncategorised;
         ImageInfoRetrieve retriever = new ImageInfoRetrieve();
         private List<TheImage> imageList = new List<TheImage>();
 
@@ -42,7 +43,7 @@ namespace ImageAnalysisTool
             directoryList = "Files:\n";
 
 
-            Categories uncategorised = new Categories("Uncategorised");
+            uncategorised = new Categories("All Images");
             foreach (string files in filepaths)
             {
                 directoryList += files + "\n";
@@ -64,7 +65,7 @@ namespace ImageAnalysisTool
 
             listBox.Text = directoryList;
 
-            this.imgBox.Image = imageList[currentNumber].GetTheImage();
+            this.imgBox.Image = uncategorised.ImageToReturn(currentNumber);
             this.imgNameLabel.Text = $"Current Image: {imageList[currentNumber].TheImageName()}";
 
             fileInfoLabel.Text = imageList[currentNumber].GetAllInfo();
@@ -72,23 +73,39 @@ namespace ImageAnalysisTool
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            currentNumber++;
+            if (currentNumber < uncategorised.ReturnNumberOfImages()-1)
+            {
+                currentNumber++;
+            }
+            else
+            {
+                currentNumber = 0;
+            }
             this.UpdateDisplay();
 
         }
 
         private void prevButton_Click(object sender, EventArgs e)
         {
-            currentNumber--;
+            if (currentNumber >0 )
+            {
+                currentNumber--;
+            }
+            else
+            {
+                currentNumber = uncategorised.ReturnNumberOfImages()-1;
+            }
             this.UpdateDisplay();
         }
 
         private void UpdateDisplay()
         {
-            imgNameLabel.Text = $"Current Image: {imageList[currentNumber].TheImageName()}";
+            TheImage image = new TheImage();
+            image = imageList[currentNumber];
+
+            imgNameLabel.Text = $"Current Image: {image.TheImageName()}";
             this.imgBox.Image = imageList[currentNumber].GetTheImage();
             
-            //This needs changing so that it can recieve only info that the image has and needs more.
             fileInfoLabel.Text = imageList[currentNumber].GetAllInfo();
         }
 
@@ -123,9 +140,26 @@ namespace ImageAnalysisTool
 
         private void sortButton_Click(object sender, EventArgs e)
         {
-            SortingForm sortSelection = new SortingForm();
-            sortSelection.Show();
+            SortingForm sortSelection = new SortingForm();           
             sortSelection.AddCategories(allCategories);
+            sortSelection.ShowDialog();
+
+
+            allCategories = sortSelection.returnList();
+
+            foreach (var cat in allCategories)
+            {
+                catLabel.Text = catLabel.Text + $"{cat.Name} ({cat.ReturnNumberOfImages()}) \n ";
+            }
+        }
+
+        private void reportButton_Click(object sender, EventArgs e)
+        {
+
+            DocumentCreator newDoc = new DocumentCreator();
+            newDoc.AddCategories(allCategories);
+            newDoc.GenerateDocumentation();
+
         }
     }
 }

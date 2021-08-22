@@ -31,11 +31,9 @@ namespace ImageAnalysisTool
         {
             this.manufacturerBox = new System.Windows.Forms.CheckBox();
             this.modelBox = new System.Windows.Forms.CheckBox();
-            this.monthBox = new System.Windows.Forms.CheckBox();
-            this.dayBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.yearBox = new System.Windows.Forms.CheckBox();
-            this.locationBox = new System.Windows.Forms.CheckBox();
+            this.faceBox = new System.Windows.Forms.CheckBox();
             this.sortButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,7 +41,7 @@ namespace ImageAnalysisTool
             // 
             this.manufacturerBox.AutoSize = true;
             this.manufacturerBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.manufacturerBox.Location = new System.Drawing.Point(31, 54);
+            this.manufacturerBox.Location = new System.Drawing.Point(31, 82);
             this.manufacturerBox.Name = "manufacturerBox";
             this.manufacturerBox.Size = new System.Drawing.Size(242, 29);
             this.manufacturerBox.TabIndex = 3;
@@ -54,34 +52,12 @@ namespace ImageAnalysisTool
             // 
             this.modelBox.AutoSize = true;
             this.modelBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.modelBox.Location = new System.Drawing.Point(31, 89);
+            this.modelBox.Location = new System.Drawing.Point(58, 143);
             this.modelBox.Name = "modelBox";
             this.modelBox.Size = new System.Drawing.Size(181, 29);
             this.modelBox.TabIndex = 4;
             this.modelBox.Text = "Equipment Model";
             this.modelBox.UseVisualStyleBackColor = true;
-            // 
-            // monthBox
-            // 
-            this.monthBox.AutoSize = true;
-            this.monthBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.monthBox.Location = new System.Drawing.Point(31, 159);
-            this.monthBox.Name = "monthBox";
-            this.monthBox.Size = new System.Drawing.Size(87, 29);
-            this.monthBox.TabIndex = 5;
-            this.monthBox.Text = "Month";
-            this.monthBox.UseVisualStyleBackColor = true;
-            // 
-            // dayBox
-            // 
-            this.dayBox.AutoSize = true;
-            this.dayBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dayBox.Location = new System.Drawing.Point(31, 194);
-            this.dayBox.Name = "dayBox";
-            this.dayBox.Size = new System.Drawing.Size(63, 29);
-            this.dayBox.TabIndex = 6;
-            this.dayBox.Text = "Day";
-            this.dayBox.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -97,23 +73,23 @@ namespace ImageAnalysisTool
             // 
             this.yearBox.AutoSize = true;
             this.yearBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.yearBox.Location = new System.Drawing.Point(31, 124);
+            this.yearBox.Location = new System.Drawing.Point(109, 194);
             this.yearBox.Name = "yearBox";
             this.yearBox.Size = new System.Drawing.Size(67, 29);
             this.yearBox.TabIndex = 8;
             this.yearBox.Text = "Year";
             this.yearBox.UseVisualStyleBackColor = true;
             // 
-            // locationBox
+            // faceBox
             // 
-            this.locationBox.AutoSize = true;
-            this.locationBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.locationBox.Location = new System.Drawing.Point(31, 229);
-            this.locationBox.Name = "locationBox";
-            this.locationBox.Size = new System.Drawing.Size(103, 29);
-            this.locationBox.TabIndex = 9;
-            this.locationBox.Text = "Location";
-            this.locationBox.UseVisualStyleBackColor = true;
+            this.faceBox.AutoSize = true;
+            this.faceBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.faceBox.Location = new System.Drawing.Point(66, 244);
+            this.faceBox.Name = "faceBox";
+            this.faceBox.Size = new System.Drawing.Size(173, 29);
+            this.faceBox.TabIndex = 9;
+            this.faceBox.Text = "Face Recognition";
+            this.faceBox.UseVisualStyleBackColor = true;
             // 
             // sortButton
             // 
@@ -132,15 +108,14 @@ namespace ImageAnalysisTool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 469);
             this.Controls.Add(this.sortButton);
-            this.Controls.Add(this.locationBox);
+            this.Controls.Add(this.faceBox);
             this.Controls.Add(this.yearBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dayBox);
-            this.Controls.Add(this.monthBox);
             this.Controls.Add(this.modelBox);
             this.Controls.Add(this.manufacturerBox);
             this.Name = "SortingForm";
             this.Text = "SortingForm";
+            this.Load += new System.EventHandler(this.SortingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,11 +125,9 @@ namespace ImageAnalysisTool
 
         private System.Windows.Forms.CheckBox manufacturerBox;
         private System.Windows.Forms.CheckBox modelBox;
-        private System.Windows.Forms.CheckBox monthBox;
-        private System.Windows.Forms.CheckBox dayBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox yearBox;
-        private System.Windows.Forms.CheckBox locationBox;
+        private System.Windows.Forms.CheckBox faceBox;
         private System.Windows.Forms.Button sortButton;
     }
 }
